@@ -42,13 +42,43 @@ public class Project {
 			con.rollback(); // In case of any exception, we roll back to the database state we had before starting this transaction
 		}
 		
-		
+		String usageInstructions = ("java Project /?\r\n" + 
+				"	a. This “Usage” text will be output for the “/?” command line argument\r\n" + 
+				"2. java Project CreateItem <itemCode> <itemDescription> <price>\r\n" + 
+				"	a. Creates an item\r\n" + 
+				"3. java Project CreatePurchase <itemCode> <PurchaseQuantity>\r\n" + 
+				"	a. Creates a Purchase record\r\n" + 
+				"4. java Project CreateShipment <itemCode> <ShipmentQuantity> <shipmentDate>\r\n" + 
+				"	a. Creates a Shipment record\r\n" + 
+				"5. java Project GetItems <itemCode>\r\n" + 
+				"	a. Returns all items associated with the itemcode\\r\\n" + 
+				"	b. Use % as input to be used for all items\r\n" + 
+				"6. java Project GetShipments <itemCode>\r\n" + 
+				"	a. Returns all shipments associated with the itemcode\r\n" + 
+				"	b. Use % as input to be used for all items\r\n" + 
+				"7. java Project GetPurchases <itemCode>\r\n" + 
+				"	a. Returns all purchases associated with the itemcode\r\n" + 
+				"	b. Use % to be used for all Items\r\n" + 
+				"8. java Project ItemsAvailable <itemCode>\r\n" + 
+				"	a. Returns a calculation for items. Simply stated, it will return, per item requested: all\r\n" + 
+				"	shipment quantities minus all purchase quantities.\r\n" + 
+				"	b. Only one record in the result set per item code.\r\n" + 
+				"	c. Use % to be used for a request, this will return all Items\r\n" +  
+				"9. java Project UpdateItem <itemCode> <price>\r\n" + 
+				"	a. Changes the price for the itemItemCode\r\n" + 
+				"10. java Project DeleteItem <itemCode>\r\n" + 
+				"	a. Removes only the item exactly matching the parameter (errors are expected if shipments\r\n" + 
+				"	or purchases are referencing the item.)\r\n" + 
+				"11. java Project DeleteShipment <itemCode>\r\n" + 
+				"	a. Removes only the most recent shipment for one item code, if a shipment exists.\r\n" + 
+				"12. java Project DeletePurchase <itemCode>\r\n" + 
+				"	a. Removes only the most recent purchase for one item code, if a purchase exists.");
 		if(args.length == 0) {
-			System.out.println("Usage instructions.");
+			System.out.println(usageInstructions);
 			System.exit(1);
 		}
 		if(args[0].equals("/?")) {
-			System.out.println("Usage instructions");
+			System.out.println(usageInstructions);
 			System.exit(1);
 		}
 		if(args[0].equals("CreateItem") && args.length == 4) {
