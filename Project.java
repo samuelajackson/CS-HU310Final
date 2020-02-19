@@ -199,7 +199,16 @@ public class Project {
 			}
 		}
 		if(args[0].equals("UpdateItem") && args.length == 2) {
-
+			try {
+				stmt = con.prepareStatement("call UpdateItem(?,?)");
+				stmt.setString(1, args[1]);
+				stmt.setDouble(2, Double.parseDouble(args[2]));
+				int i = stmt.executeUpdate();
+				System.out.println(i + " records deleted.");
+			}
+			catch(SQLException e) {
+				System.out.println(e.getMessage());
+			}
 		}
 		if(args[0].equals("DeleteItem") && args.length == 2) {
 			try {
