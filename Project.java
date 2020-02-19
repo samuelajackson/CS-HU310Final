@@ -119,7 +119,8 @@ public class Project {
 			catch(SQLException e) {
 				System.out.println(e.getMessage());
 				con.rollback(); // In case of any exception, we roll back to the database state we had before starting this transaction	
-			}				}
+			}				
+		}
 		if(args[0].equals("GetItems") && args.length == 2) {
 			try {
 				stmt = con.prepareStatement("call GetItems(?)");
@@ -154,7 +155,16 @@ public class Project {
 
 		}
 		if(args[0].equals("DeleteItem") && args.length == 2) {
-
+			try {
+				stmt = con.prepareStatement("call DeleteItem(?)");
+				stmt.setString(1, args[1]);
+				int i = stmt.executeUpdate();
+				System.out.println(i + " records deleted.");
+			}
+			catch(SQLException e) {
+				System.out.println(e.getMessage());
+				con.rollback(); // In case of any exception, we roll back to the database state we had before starting this transaction	
+			}				
 		}
 		if(args[0].equals("DeleteShipment") && args.length == 2) {
 
