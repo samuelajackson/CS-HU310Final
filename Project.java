@@ -133,8 +133,8 @@ public class Project {
 						if (i > 1) System.out.print(", ");
 						String colVal = rs.getString(i);
 						System.out.print(colVal + " " + rsmd.getColumnName(i));
-						System.out.println();
 					}
+					System.out.println();
 				}
 			} catch(SQLException e) {
 				System.out.println(e.getMessage());
