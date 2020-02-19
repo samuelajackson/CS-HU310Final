@@ -189,7 +189,7 @@ public class Project {
 				stmt.setString(1, args[1]);
 				stmt.setDouble(2, Double.parseDouble(args[2]));
 				int i = stmt.executeUpdate();
-				System.out.println(i + " records deleted.");
+				System.out.println(i + " records updated.");
 			}
 			catch(SQLException e) {
 				System.out.println(e.getMessage());
