@@ -92,7 +92,7 @@ public class Project {
 		}
 		else if(args[0].equals("CreateShipment") && args.length == 4) {
 			try {
-				stmt = con.prepareStatement("call CreateShipment(?,?)");
+				stmt = con.prepareStatement("call CreateShipment(?,?,?)");
 				stmt.setString(1, args[1]);
 				stmt.setInt(2, Integer.parseInt(args[2]));
 				stmt.setString(3, args[3]);
