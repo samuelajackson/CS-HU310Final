@@ -39,7 +39,6 @@ public class Project {
 		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());
-			con.rollback(); // In case of any exception, we roll back to the database state we had before starting this transaction
 		}
 		
 		String usageInstructions = ("USAGE INSTRUCTIONS:\r\n" +
