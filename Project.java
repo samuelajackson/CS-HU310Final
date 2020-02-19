@@ -142,105 +142,27 @@ public class Project {
 			}
 		}
 		if(args[0].equals("GetShipments") && args.length == 2) {
-			getShipments(args[1]);
+
 		}
 		if(args[0].equals("GetPurchases") && args.length == 2) {
-			getPurchases(args[1]);
+
 		}
 		if(args[0].equals("ItemsAvailable") && args.length == 2) {
-			itemsAvailable(args[1]);
+
 		}
 		if(args[0].equals("UpdateItem") && args.length == 2) {
-			updateItem(args[1], Double.parseDouble(args[2]));
+
 		}
 		if(args[0].equals("DeleteItem") && args.length == 2) {
-			deleteItem(args[1]);
+
 		}
 		if(args[0].equals("DeleteShipment") && args.length == 2) {
-			deleteShipment(args[1]);
+
 		}
 		if(args[0].equals("DeletePurchase") && args.length == 2) {
-			deletePurchase(args[1]);
+
 		}
 
 	}
 	
-	public static void createItem(String itemCode, String itemDescription, double price) {
-		Statement stmt;
-		String createItem = "call CreateItem("+ itemCode + ", " + itemDescription + ", " + price + ")";
-		try {
-			stmt = con.createStatement();
-			stmt.executeUpdate(createItem);
-		}
-		catch(SQLException e) {
-			System.out.println(e.getMessage());
-//			con.rollback(); // In case of any exception, we roll back to the database state we had before starting this transaction	
-		}
-		
-	}
-	
-	public static void createPurchase(String itemCode, int PurchaseQuantity) {
-		Statement stmt;
-		String createPurchase = "call CreatePurchase("+ itemCode + ", " + PurchaseQuantity + ")";
-		try {
-			stmt = con.createStatement();
-			stmt.executeUpdate(createPurchase);
-		}
-		catch(Exception e) {
-			
-		}
-	}
-	
-	public static void createShipment(String itemCode, int ShipmentQuantity, String date) {
-		Statement stmt;
-		String insert = "Insert into `" + dbName + "`.`Shipment` (ItemCode, ShipmentQuantity, Date) Values ('" + 
-				itemCode + "','" + ShipmentQuantity + "','" + date + "')";
-		try {
-			stmt = con.createStatement();
-			stmt.executeUpdate(insert);
-		}
-		catch(Exception e) {
-			
-		}
-	}
-	
-	public static void getItems(String itemCode) {
-		Statement stmt;
-		try {
-			stmt = con.createStatement();
-			ResultSet resultSet = stmt.executeQuery("select * from `"+dbName+"`.`Student`;");
-		}
-		catch(Exception e) {
-			
-		}
-
-	}
-	
-	public static void getShipments(String itemCode) {
-		
-	}
-	
-	public static void getPurchases(String itemCode) {
-		
-	}
-	
-	public static void itemsAvailable(String itemCode) {
-		
-	}
-	
-	public static void updateItem(String itemCode, double price) {
-		
-	}
-	
-	public static void deleteItem(String itemCode) {
-		
-	}
-	
-	public static void deleteShipment(String itemCode) {
-		
-	}
-
-	public static void deletePurchase(String itemCode) {
-		
-	}
 }
