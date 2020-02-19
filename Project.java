@@ -11,7 +11,7 @@ public class Project {
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
 		Connection con = null;
-		PreparedStatement stmt = null, stmt2 = null;
+		PreparedStatement stmt = null;
 		try {	
 			int nRemotePort = 52457; // remote port number of your database
 			String strDbPassword = "skeletonKey"; // database login password
