@@ -213,10 +213,26 @@ public class Project {
 			}				
 		}
 		if(args[0].equals("DeleteShipment") && args.length == 2) {
-
+			try {
+				stmt = con.prepareStatement("call DeleteShipment(?)");
+				stmt.setString(1, args[1]);
+				int i = stmt.executeUpdate();
+				System.out.println(i + " records deleted.");
+			}
+			catch(SQLException e) {
+				System.out.println(e.getMessage());
+			}
 		}
 		if(args[0].equals("DeletePurchase") && args.length == 2) {
-
+			try {
+				stmt = con.prepareStatement("call DeletePurchase(?)");
+				stmt.setString(1, args[1]);
+				int i = stmt.executeUpdate();
+				System.out.println(i + " records deleted.");
+			}
+			catch(SQLException e) {
+				System.out.println(e.getMessage());
+			}
 		}
 
 	}
