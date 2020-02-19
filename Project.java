@@ -79,8 +79,18 @@ public class Project {
 			}		
 		}
 		if(args[0].equals("CreateShipment") && args.length == 4) {
-			createShipment(args[1], Integer.parseInt(args[2]), args[3]);
-		}
+			try {
+				stmt = con.prepareStatement("call CreateShipment(?,?)");
+				stmt.setString(1, args[1]);
+				stmt.setInt(2, Integer.parseInt(args[2]));
+				stmt.setString(3, args[3]);
+				int i = stmt.executeUpdate();
+				System.out.println(i + " records inserted.");
+			}
+			catch(SQLException e) {
+				System.out.println(e.getMessage());
+				con.rollback(); // In case of any exception, we roll back to the database state we had before starting this transaction	
+			}				}
 		if(args[0].equals("GetItems") && args.length == 2) {
 			getItems(args[1]);
 		}
