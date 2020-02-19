@@ -14,29 +14,17 @@ public class Project {
 			int nRemotePort = 52457; // remote port number of your database
 			String strDbPassword = "skeletonKey"; // database login password
 			String dbName = "finalProject";  
-			/*
-			 * STEP 1 and 2
-			 * LOAD the Database DRIVER and obtain a CONNECTION
-			 * 
-			 * */
+			
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("jdbc:mysql://localhost:"+nRemotePort+"/"+dbName+"?verifyServerCertificate=false&useSSL=true");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:"+nRemotePort+"/"+dbName+"?verifyServerCertificate=false&useSSL=true", "msandbox",
 					strDbPassword);
-			// Do something with the Connection
+			//Connects to Terran Dykes's database
 			System.out.println("Database ["+dbName+" db] connection succeeded!");
 			System.out.println();
-			
-			/*
-			 * STEP 3
-			 * EXECUTE STATEMENTS (by using Transactions)
-			 * 
-			 * */
-			
-
 		}
 		catch(Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println(e.getMessage()); //Something went wrong, kicks the user out.
 		}
 		
 		String usageInstructions = ("USAGE INSTRUCTIONS:\r\n" +
