@@ -42,8 +42,9 @@ public class Project {
 			con.rollback(); // In case of any exception, we roll back to the database state we had before starting this transaction
 		}
 		
-		String usageInstructions = ("java Project /?\r\n" + 
-				"	a. This “Usage” text will be output for the “/?” command line argument\r\n" + 
+		String usageInstructions = ("USAGE INSTRUCTIONS:\r\n" +
+				"1. java Project /?\r\n" + 
+				"	a. This usage text will be output for the /? command line argument\r\n" + 
 				"2. java Project CreateItem <itemCode> <itemDescription> <price>\r\n" + 
 				"	a. Creates an item\r\n" + 
 				"3. java Project CreatePurchase <itemCode> <PurchaseQuantity>\r\n" + 
@@ -60,15 +61,13 @@ public class Project {
 				"	a. Returns all purchases associated with the itemcode\r\n" + 
 				"	b. Use % to be used for all Items\r\n" + 
 				"8. java Project ItemsAvailable <itemCode>\r\n" + 
-				"	a. Returns a calculation for items. Simply stated, it will return, per item requested: all\r\n" + 
-				"	shipment quantities minus all purchase quantities.\r\n" + 
-				"	b. Only one record in the result set per item code.\r\n" + 
-				"	c. Use % to be used for a request, this will return all Items\r\n" +  
+				"	a. Returns a calculation for items.\r\n" + 
+				"	b. Use % to be used for a request, this will return all Items\r\n" +  
 				"9. java Project UpdateItem <itemCode> <price>\r\n" + 
 				"	a. Changes the price for the itemItemCode\r\n" + 
 				"10. java Project DeleteItem <itemCode>\r\n" + 
-				"	a. Removes only the item exactly matching the parameter (errors are expected if shipments\r\n" + 
-				"	or purchases are referencing the item.)\r\n" + 
+				"	a. Removes only the item exactly matching the parameter (errors are expected if shipments" + 
+				" or purchases are referencing the item.)\r\n" + 
 				"11. java Project DeleteShipment <itemCode>\r\n" + 
 				"	a. Removes only the most recent shipment for one item code, if a shipment exists.\r\n" + 
 				"12. java Project DeletePurchase <itemCode>\r\n" + 
