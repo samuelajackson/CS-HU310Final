@@ -183,7 +183,7 @@ public class Project {
 				System.out.println(e.getMessage());
 			}
 		}
-		else if(args[0].equals("UpdateItem") && args.length == 2) {
+		else if(args[0].equals("UpdateItem") && args.length == 3) {
 			try {
 				stmt = con.prepareStatement("call UpdateItem(?,?)");
 				stmt.setString(1, args[1]);
