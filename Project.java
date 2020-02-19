@@ -91,7 +91,6 @@ public class Project {
 			}
 			catch(SQLException e) {
 				System.out.println(e.getMessage());
-				con.rollback(); // In case of any exception, we roll back to the database state we had before starting this transaction	
 			}
 		}
 		if(args[0].equals("CreatePurchase") && args.length == 3) {
@@ -104,7 +103,6 @@ public class Project {
 			}
 			catch(SQLException e) {
 				System.out.println(e.getMessage());
-				con.rollback(); // In case of any exception, we roll back to the database state we had before starting this transaction	
 			}		
 		}
 		if(args[0].equals("CreateShipment") && args.length == 4) {
@@ -118,7 +116,6 @@ public class Project {
 			}
 			catch(SQLException e) {
 				System.out.println(e.getMessage());
-				con.rollback(); // In case of any exception, we roll back to the database state we had before starting this transaction	
 			}				
 		}
 		if(args[0].equals("GetItems") && args.length == 2) {
@@ -139,7 +136,6 @@ public class Project {
 				}
 			} catch(SQLException e) {
 				System.out.println(e.getMessage());
-				con.rollback();
 			}
 		}
 		if(args[0].equals("GetShipments") && args.length == 2) {
@@ -160,7 +156,6 @@ public class Project {
 				}
 			} catch(SQLException e) {
 				System.out.println(e.getMessage());
-				con.rollback();
 			}
 		}
 		if(args[0].equals("GetPurchases") && args.length == 2) {
@@ -181,7 +176,6 @@ public class Project {
 				}
 			} catch(SQLException e) {
 				System.out.println(e.getMessage());
-				con.rollback();
 			}
 		}
 		if(args[0].equals("ItemsAvailable") && args.length == 2) {
@@ -202,7 +196,6 @@ public class Project {
 				}
 			} catch(SQLException e) {
 				System.out.println(e.getMessage());
-				con.rollback();
 			}
 		}
 		if(args[0].equals("UpdateItem") && args.length == 2) {
@@ -217,7 +210,6 @@ public class Project {
 			}
 			catch(SQLException e) {
 				System.out.println(e.getMessage());
-				con.rollback(); // In case of any exception, we roll back to the database state we had before starting this transaction	
 			}				
 		}
 		if(args[0].equals("DeleteShipment") && args.length == 2) {
