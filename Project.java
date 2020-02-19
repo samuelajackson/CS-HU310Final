@@ -76,11 +76,11 @@ public class Project {
 			System.out.println(usageInstructions);
 			System.exit(1);
 		}
-		if(args[0].equals("/?")) {
+		else if(args[0].equals("/?")) {
 			System.out.println(usageInstructions);
 			System.exit(1);
 		}
-		if(args[0].equals("CreateItem") && args.length == 4) {
+		else if(args[0].equals("CreateItem") && args.length == 4) {
 			try {
 				stmt = con.prepareStatement("call CreateItem(?,?,?)");
 				stmt.setString(1, args[1]);
@@ -93,7 +93,7 @@ public class Project {
 				System.out.println(e.getMessage());
 			}
 		}
-		if(args[0].equals("CreatePurchase") && args.length == 3) {
+		else if(args[0].equals("CreatePurchase") && args.length == 3) {
 			try {
 				stmt = con.prepareStatement("call CreatePurchase(?,?)");
 				stmt.setString(1, args[1]);
@@ -105,7 +105,7 @@ public class Project {
 				System.out.println(e.getMessage());
 			}		
 		}
-		if(args[0].equals("CreateShipment") && args.length == 4) {
+		else if(args[0].equals("CreateShipment") && args.length == 4) {
 			try {
 				stmt = con.prepareStatement("call CreateShipment(?,?)");
 				stmt.setString(1, args[1]);
@@ -118,7 +118,7 @@ public class Project {
 				System.out.println(e.getMessage());
 			}				
 		}
-		if(args[0].equals("GetItems") && args.length == 2) {
+		else if(args[0].equals("GetItems") && args.length == 2) {
 			try {
 				stmt = con.prepareStatement("call GetItems(?)");
 				stmt.setString(1, args[1]);
@@ -138,7 +138,7 @@ public class Project {
 				System.out.println(e.getMessage());
 			}
 		}
-		if(args[0].equals("GetShipments") && args.length == 2) {
+		else if(args[0].equals("GetShipments") && args.length == 2) {
 			try {
 				stmt = con.prepareStatement("call GetShipments(?)");
 				stmt.setString(1, args[1]);
@@ -158,7 +158,7 @@ public class Project {
 				System.out.println(e.getMessage());
 			}
 		}
-		if(args[0].equals("GetPurchases") && args.length == 2) {
+		else if(args[0].equals("GetPurchases") && args.length == 2) {
 			try {
 				stmt = con.prepareStatement("call GetPurchases(?)");
 				stmt.setString(1, args[1]);
@@ -178,7 +178,7 @@ public class Project {
 				System.out.println(e.getMessage());
 			}
 		}
-		if(args[0].equals("ItemsAvailable") && args.length == 2) {
+		else if(args[0].equals("ItemsAvailable") && args.length == 2) {
 			try {
 				stmt = con.prepareStatement("call ItemsAvailable(?)");
 				stmt.setString(1, args[1]);
@@ -198,7 +198,7 @@ public class Project {
 				System.out.println(e.getMessage());
 			}
 		}
-		if(args[0].equals("UpdateItem") && args.length == 2) {
+		else if(args[0].equals("UpdateItem") && args.length == 2) {
 			try {
 				stmt = con.prepareStatement("call UpdateItem(?,?)");
 				stmt.setString(1, args[1]);
@@ -210,7 +210,7 @@ public class Project {
 				System.out.println(e.getMessage());
 			}
 		}
-		if(args[0].equals("DeleteItem") && args.length == 2) {
+		else if(args[0].equals("DeleteItem") && args.length == 2) {
 			try {
 				stmt = con.prepareStatement("call DeleteItem(?)");
 				stmt.setString(1, args[1]);
@@ -221,7 +221,7 @@ public class Project {
 				System.out.println(e.getMessage());
 			}				
 		}
-		if(args[0].equals("DeleteShipment") && args.length == 2) {
+		else if(args[0].equals("DeleteShipment") && args.length == 2) {
 			try {
 				stmt = con.prepareStatement("call DeleteShipment(?)");
 				stmt.setString(1, args[1]);
@@ -232,7 +232,7 @@ public class Project {
 				System.out.println(e.getMessage());
 			}
 		}
-		if(args[0].equals("DeletePurchase") && args.length == 2) {
+		else if(args[0].equals("DeletePurchase") && args.length == 2) {
 			try {
 				stmt = con.prepareStatement("call DeletePurchase(?)");
 				stmt.setString(1, args[1]);
@@ -242,6 +242,10 @@ public class Project {
 			catch(SQLException e) {
 				System.out.println(e.getMessage());
 			}
+		}
+		else {
+			System.out.println(usageInstructions);
+			System.exit(1);
 		}
 
 	}
