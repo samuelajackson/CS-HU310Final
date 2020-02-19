@@ -121,7 +121,25 @@ public class Project {
 				con.rollback(); // In case of any exception, we roll back to the database state we had before starting this transaction	
 			}				}
 		if(args[0].equals("GetItems") && args.length == 2) {
-			getItems(args[1]);
+			try {
+				stmt = con.prepareStatement("call GetItems(?)");
+				stmt.setString(1, args[1]);
+				ResultSet rs = stmt.executeQuery();
+				ResultSetMetaData rsmd = rs.getMetaData();
+				int numCols = rsmd.getColumnCount();
+				
+				while (rs.next()) {
+					for (int i = 1; i <= numCols; i++) {
+						if (i > 1) System.out.print(", ");
+						String colVal = rs.getString(i);
+						System.out.print(colVal + " " + rsmd.getColumnName(i));
+						System.out.println();
+					}
+				}
+			} catch(SQLException e) {
+				System.out.println(e.getMessage());
+				con.rollback();
+			}
 		}
 		if(args[0].equals("GetShipments") && args.length == 2) {
 			getShipments(args[1]);
