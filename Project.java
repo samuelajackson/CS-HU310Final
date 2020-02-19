@@ -185,7 +185,25 @@ public class Project {
 			}
 		}
 		if(args[0].equals("ItemsAvailable") && args.length == 2) {
-
+			try {
+				stmt = con.prepareStatement("call ItemsAvailable(?)");
+				stmt.setString(1, args[1]);
+				ResultSet rs = stmt.executeQuery();
+				ResultSetMetaData rsmd = rs.getMetaData();
+				int numCols = rsmd.getColumnCount();
+				
+				while (rs.next()) {
+					for (int i = 1; i <= numCols; i++) {
+						if (i > 1) System.out.print(", ");
+						String colVal = rs.getString(i);
+						System.out.print(colVal + " " + rsmd.getColumnName(i));
+					}
+					System.out.println();
+				}
+			} catch(SQLException e) {
+				System.out.println(e.getMessage());
+				con.rollback();
+			}
 		}
 		if(args[0].equals("UpdateItem") && args.length == 2) {
 
